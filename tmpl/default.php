@@ -79,7 +79,7 @@ defined('_JEXEC') or die('Restricted access');
 
         <script type="text/javascript">
         <?php
-            $protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === 0 ? 'https://' : 'http://';
+            $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
         ?>
 	    document.contactform.browser_check.value = "true";
 	    $("#submit").click(function(){
