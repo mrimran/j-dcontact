@@ -78,13 +78,16 @@ defined('_JEXEC') or die('Restricted access');
         </form>
 
         <script type="text/javascript">
+        <?php
+            $protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === 0 ? 'https://' : 'http://';
+        ?>
 	    document.contactform.browser_check.value = "true";
 	    $("#submit").click(function(){
 		$('#result').html('<img src="<?php echo JURI::root(); ?>modules/mod_jdcontact/tmpl/images/loader.gif" class="loading-img" alt="loader image">').fadeIn();
 		var input_data = $('#form').serialize();
 				$.ajax({
 				   type: "POST",
-				   url:  "<?php echo "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>",
+				   url:  "<?php echo "$protocol://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>",
 				   data: input_data,
 				   success: function(msg){
 					   $('.loading-img').remove(); //Removing the loader image because the validation is finished
