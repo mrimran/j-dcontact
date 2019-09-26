@@ -87,7 +87,7 @@ defined('_JEXEC') or die('Restricted access');
 		var input_data = $('#form').serialize();
 				$.ajax({
 				   type: "POST",
-				   url:  "<?php echo "$protocol://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>",
+				   url:  "<?php echo "//" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>",
 				   data: input_data,
 				   success: function(msg){
 					   $('.loading-img').remove(); //Removing the loader image because the validation is finished
